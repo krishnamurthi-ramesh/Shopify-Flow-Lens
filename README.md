@@ -74,3 +74,4 @@ With the factual baseline and product teardown locked, the next phase is **prima
 2. Where merchants get stuck in current Shopify Flow or Sidekick workflows.
 3. What evidence merchants need to see before trusting an automated workflow.
 4. Which opportunity (H1–H5) has the strongest reach and impact to become our flagship product scope.
+

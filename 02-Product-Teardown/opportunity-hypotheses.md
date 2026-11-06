@@ -60,3 +60,4 @@ Use a simple RICE-like score only after discovery gives us reach and impact evid
 - Show what was not tested, not only what passed.
 - Keep an audit trail of proposed and applied changes.
 - Respect existing Apply/Discard and version-history/restore capabilities; any prototype should improve their discoverability or clarity rather than claiming these controls do not exist.
+

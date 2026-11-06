@@ -169,3 +169,4 @@ These remain product hypotheses until validated with merchants and observed work
 3. Shopify Help Center — [Testing a workflow in Shopify Flow](https://help.shopify.com/en/manual/shopify-flow/manage/test-workflow).
 4. Shopify Help Center — [Using the workflow editor in Shopify Flow](https://help.shopify.com/en/manual/shopify-flow/create/workflow-editor).
 5. Shopify Help Center — [Reviewing the version history of a workflow in Shopify Flow](https://help.shopify.com/en/manual/shopify-flow/manage/version-history).
+

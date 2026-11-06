@@ -78,3 +78,4 @@ Do not use a real live store action. Use a test store or a sandbox and confirm t
 - Separate observed behaviour, participant claims and researcher interpretation.
 - Do not translate a single anecdote into a universal segment claim.
 - Record counterexamples and disconfirming evidence.
+
