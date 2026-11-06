@@ -2,9 +2,9 @@
 
 [![Role](https://img.shields.io/badge/Role-AI_Product_Manager-7c3aed?style=flat-square)]()
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
-[![Status](https://img.shields.io/badge/Status-Phase_1_&_2_Complete_|_Discovery_Ready-blue?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Phase_3_Passive_Discovery_Active-blue?style=flat-square)]()
 
-An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes 5 testable opportunity hypotheses for customer validation.
+An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes testable opportunity hypotheses grounded in real merchant evidence.
 
 ---
 
@@ -29,7 +29,8 @@ Rather than inventing problems or proposing features that Shopify already suppor
 Project-4-Shopify-Flow-AI/
 ├── README.md                                      ← You are here: Teardown synthesis & executive brief
 ├── 01-Research/
-│   └── problem-discovery-and-user-segmentation.md ← Evidence ledger (E1–E17), behavioral segments, JTBD
+│   ├── problem-discovery-and-user-segmentation.md ← Evidence ledger (E1–E17), behavioral segments, JTBD
+│   └── reddit-evidence-log-01.md                  ← Initial passive Reddit signals (R1–R7) & observations
 ├── 02-Product-Teardown/
 │   ├── shopify-flow-sidekick-deep-dive.md         ← Documented user journey, funnels, AI architecture
 │   └── opportunity-hypotheses.md                  ← 5 testable opportunity hypotheses (H1–H5)
@@ -68,8 +69,8 @@ Our analysis distinguishes verified first-party disclosures from product hypothe
 
 ---
 
-## 🧭 Immediate Priority: Phase 3 — Customer Discovery
+## 🧭 Active Phase: Phase 3 — Customer Discovery
 
-With the factual baseline and product teardown locked, the active phase is **primary merchant research** using:
-- [`03-Discovery-Plan/merchant-interview-guide.md`](./03-Discovery-Plan/merchant-interview-guide.md) — Qualitative interview protocol.
-- [`03-Discovery-Plan/phase-3-validation-roadmap.md`](./03-Discovery-Plan/phase-3-validation-roadmap.md) — The end-to-end execution roadmap from customer discovery to MVP selection and portfolio packaging.
+Current milestone is **Phase 3A: Passive Discovery via Public Merchant Discussions**:
+- [`01-Research/reddit-evidence-log-01.md`](./01-Research/reddit-evidence-log-01.md) — 7 initial Reddit discussions coded across observability, mobile operations, Sidekick consistency, data context, and integration boundaries.
+- Target: Review 20 additional discussions across r/shopify, r/AutomateShopify, and r/shopifyDev to validate whether the real problem is creation, outcome observability, or error recovery before building solutions.

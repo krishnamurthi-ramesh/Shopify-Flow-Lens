@@ -218,3 +218,4 @@ Keep company-reported results, participant evidence, product hypotheses, prototy
 6. Complete the batch, synthesise findings and make a go / revise / stop decision before selecting the MVP.
 
 **The next task is participant recruitment and real problem validation—not coding the AI workflow builder yet.**
+
