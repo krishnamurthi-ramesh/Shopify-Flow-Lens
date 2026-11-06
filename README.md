@@ -2,7 +2,7 @@
 
 [![Role](https://img.shields.io/badge/Role-AI_Product_Manager-7c3aed?style=flat-square)]()
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
-[![Status](https://img.shields.io/badge/Status-Phase_1_&_2_Complete_|_Discovery_Pending-blue?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Phase_1_&_2_Complete_|_Discovery_Ready-blue?style=flat-square)]()
 
 An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes 5 testable opportunity hypotheses for customer validation.
 
@@ -34,7 +34,8 @@ Project-4-Shopify-Flow-AI/
 │   ├── shopify-flow-sidekick-deep-dive.md         ← Documented user journey, funnels, AI architecture
 │   └── opportunity-hypotheses.md                  ← 5 testable opportunity hypotheses (H1–H5)
 └── 03-Discovery-Plan/
-    └── merchant-interview-guide.md                ← Semi-structured 30-min interview guide & note template
+    ├── merchant-interview-guide.md                ← Semi-structured 30-min interview guide & note template
+    └── phase-3-validation-roadmap.md              ← Complete Phase 3-to-8 execution roadmap
 ```
 
 ---
@@ -67,11 +68,8 @@ Our analysis distinguishes verified first-party disclosures from product hypothe
 
 ---
 
-## 🧭 Next Milestone: Phase 3 — Customer Discovery
+## 🧭 Immediate Priority: Phase 3 — Customer Discovery
 
-With the factual baseline and product teardown locked, the next phase is **primary merchant research** using the [`03-Discovery-Plan/merchant-interview-guide.md`](./03-Discovery-Plan/merchant-interview-guide.md) to validate:
-1. Which merchant behavioral segment experiences the most painful recurring operational tasks.
-2. Where merchants get stuck in current Shopify Flow or Sidekick workflows.
-3. What evidence merchants need to see before trusting an automated workflow.
-4. Which opportunity (H1–H5) has the strongest reach and impact to become our flagship product scope.
-
+With the factual baseline and product teardown locked, the active phase is **primary merchant research** using:
+- [`03-Discovery-Plan/merchant-interview-guide.md`](./03-Discovery-Plan/merchant-interview-guide.md) — Qualitative interview protocol.
+- [`03-Discovery-Plan/phase-3-validation-roadmap.md`](./03-Discovery-Plan/phase-3-validation-roadmap.md) — The end-to-end execution roadmap from customer discovery to MVP selection and portfolio packaging.
