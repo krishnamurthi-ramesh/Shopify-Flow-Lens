@@ -37,11 +37,14 @@ Project-4-Shopify-Flow-AI/
 ├── 02-Product-Teardown/
 │   ├── shopify-flow-sidekick-deep-dive.md                ← Documented user journey, funnels, AI architecture
 │   ├── opportunity-hypotheses.md                         ← 5 initial opportunity hypotheses (H1–H5)
-│   └── opportunity-solution-tree-and-mvp-decision.md     ← Phase 4: Opportunity Solution Tree & MVP decision gate
+│   ├── opportunity-solution-tree-and-mvp-decision.md     ← Phase 4: Opportunity Solution Tree & MVP decision gate
+│   └── api-access-and-capability-matrix.md               ← Track B: Feasibility audit of Admin UI, GraphQL & extensions
 └── 03-Discovery-Plan/
     ├── merchant-interview-guide.md                       ← Semi-structured 30-min interview guide & note template
     ├── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
-    └── phase-3b-targeted-validation-plan.md              ← Dual-track validation protocol & technical feasibility spike
+    ├── phase-3b-targeted-validation-plan.md              ← Dual-track validation protocol & technical feasibility spike
+    ├── development-store-experiment-guide.md             ← Track B: 7-step feasibility experiment & verification script
+    └── merchant-recruitment-shortlist.md                 ← Track A: Sourcing, outreach templates & screening scorecard
 ```
 
 ---
@@ -89,9 +92,14 @@ From our 25-discussion evidence base, we reframed the product goal from *"genera
 
 ---
 
-## 🧭 Milestone Status: Ready for Phase 3B (Targeted Live Validation)
+## 🧭 Milestone Status: Phase 3B Dual-Track Execution In Progress
 - ✅ **Phase 1: Problem Discovery & User Segmentation** — Complete (`01-Research`)
 - ✅ **Phase 2: Product & AI Architecture Teardown** — Complete (`02-Product-Teardown`)
-- ✅ **Phase 3A: Passive Discovery (25 Reddit Threads)** — Complete (`reddit-evidence-log-01.md`, `02.md`, `03.md`)
+- ✅ **Phase 3A: Passive Discovery (25 Reddit Threads)** — Complete (`reddit-evidence-log-01.md`, `02.md`, `03.md`, `evidence-audit-r1-r25.md`)
 - ✅ **Phase 4: Opportunity Solution Tree & MVP Prioritization** — Complete (`opportunity-solution-tree-and-mvp-decision.md`)
-- 🎯 **Next Milestone:** Phase 3B — Targeted Interviews (4–6 merchants, 2–3 developers) on H3/H4 diagnostic tasks + technical feasibility spike.
+- 🚀 **Phase 3B Track B (Technical Feasibility Spike):**
+  - ✅ **Deliverable 1:** API Access & Capability Matrix (`02-Product-Teardown/api-access-and-capability-matrix.md`) — Live API traces blocked; Path B (Preflight Validator) emerges as primary candidate.
+  - ✅ **Deliverable 2:** Development Store Experiment Guide & Test Script (`03-Discovery-Plan/development-store-experiment-guide.md`, `scratch/test-flow-api.js`).
+- 🚀 **Phase 3B Track A (Customer Discovery):**
+  - ✅ **Deliverable 3:** Participant Shortlist, Sourcing Queries & Screening Scorecard (`03-Discovery-Plan/merchant-recruitment-shortlist.md`).
+  - 🎯 **Next Priority:** Execute interviews with first 2 merchants & 2 developers using 7 incident-reconstruction questions.
