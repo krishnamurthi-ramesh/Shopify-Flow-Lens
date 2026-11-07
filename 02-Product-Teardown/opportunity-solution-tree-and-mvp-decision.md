@@ -260,3 +260,4 @@ A defensible case-study narrative at this stage is:
 > “I began by investigating whether Shopify merchants needed faster AI workflow generation. A review of 25 public discussions suggested that initial creation may not be the only or primary friction: users also described difficulty adapting templates, understanding condition outcomes, handling connector requirements and maintaining correct behaviour over time. I therefore reframed the opportunity around confidence in workflow outcomes. The leading hypothesis is explainable testing and run diagnostics, but I have not selected an MVP until merchant interviews, task-based usability tests and a technical access review establish that the problem is frequent, consequential and solvable.”
 
 This wording preserves the distinction between observed reports, synthesis and unvalidated product hypotheses.
+
