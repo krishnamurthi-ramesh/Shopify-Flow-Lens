@@ -151,3 +151,4 @@ Do not trigger a live shipping, fulfillment, customer notification, refund or ex
 ## 6. Do not conclude from this interview alone
 
 This interview cannot establish market prevalence, a segment-wide failure rate, willingness to pay, or that a separate product is required. A successful current workaround or a participant reporting that Flow works well is valid counterevidence.
+

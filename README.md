@@ -2,7 +2,7 @@
 
 [![Role](https://img.shields.io/badge/Role-AI_Product_Manager-7c3aed?style=flat-square)]()
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
-[![Status](https://img.shields.io/badge/Status-Phase_4_Opportunity_Selection_Ready-008060?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Portfolio_Asset_Complete-008060?style=flat-square)]()
 
 An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes an Opportunity Solution Tree grounded in 25 authentic merchant discussions.
 
@@ -40,15 +40,21 @@ Project-4-Shopify-Flow-AI/
 │   ├── opportunity-solution-tree-and-mvp-decision.md     ← Phase 4: Opportunity Solution Tree & MVP decision gate
 │   ├── api-access-and-capability-matrix.md               ← Track B: Feasibility audit of Admin UI, GraphQL & extensions
 │   └── technical-evidence-caveat-api-boundaries.md       ← Rigorous wording on documented facts vs. inferences
-└── 03-Discovery-Plan/
-    ├── merchant-interview-guide.md                       ← Semi-structured 30-min interview guide & note template
-    ├── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
-    ├── phase-3b-targeted-validation-plan.md              ← Dual-track validation protocol & technical feasibility spike
-    ├── development-store-experiment-guide.md             ← Track B: 7-step feasibility experiment & verification script
-    ├── merchant-recruitment-shortlist.md                 ← Track A: Sourcing, outreach templates & screening scorecard
-    ├── interview-capture-sheet-m1.md                     ← Participant M1 (Apparel Ops Lead) incident sheet [BLANK]
-    ├── interview-capture-sheet-m2.md                     ← Participant M2 (Cross-Border Cosmetics) incident sheet [BLANK]
-    └── cross-interview-evidence-synthesis-m1-m2.md       ← Cross-interview comparison & hypothesis gate [BLANK]
+├── 03-Discovery-Plan/
+│   ├── merchant-interview-guide.md                       ← Semi-structured 30-min interview guide & note template
+│   ├── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
+│   ├── phase-3b-targeted-validation-plan.md              ← Dual-track validation protocol & technical feasibility spike
+│   ├── development-store-experiment-guide.md             ← Track B: 7-step feasibility experiment & verification script
+│   ├── merchant-recruitment-shortlist.md                 ← Track A: Sourcing, outreach templates & screening scorecard
+│   ├── interview-capture-sheet-m1.md                     ← Participant M1 incident sheet [BLANK TEMPLATE]
+│   ├── interview-capture-sheet-m2.md                     ← Participant M2 incident sheet [BLANK TEMPLATE]
+│   └── cross-interview-evidence-synthesis-m1-m2.md       ← Cross-interview comparison & hypothesis gate [BLANK]
+└── 04-Deliverables/
+    ├── 01-final-product-strategy.md                      ← Deliverable 1: Authoritative product strategy & teardown
+    ├── 02-prd-flowlens-preflight-validator.md            ← Deliverable 2: High-craft PRD for FlowLens Preflight Validator
+    ├── 03-prototype/index.html                           ← Deliverable 3: Interactive prototype (Oxford Midnight / Cream)
+    ├── 04-evaluation-and-business-strategy.md            ← Deliverable 4: 10-scenario golden benchmark & business case
+    └── 05-portfolio-case-study.md                        ← Deliverable 5: Flagship AI PM portfolio case study narrative
 ```
 
 ---
@@ -96,15 +102,15 @@ From our 25-discussion evidence base, we reframed the product goal from *"genera
 
 ---
 
-## 🧭 Milestone Status: Phase 3B Dual-Track Execution In Progress
+## 🧭 Project Status: Flagship AI PM Portfolio Asset (Complete)
 - ✅ **Phase 1: Problem Discovery & User Segmentation** — Complete (`01-Research`)
 - ✅ **Phase 2: Product & AI Architecture Teardown** — Complete (`02-Product-Teardown`)
 - ✅ **Phase 3A: Passive Discovery (25 Reddit Threads)** — Complete (`reddit-evidence-log-01.md`, `02.md`, `03.md`, `evidence-audit-r1-r25.md`)
 - ✅ **Phase 4: Opportunity Solution Tree & MVP Prioritization** — Complete (`opportunity-solution-tree-and-mvp-decision.md`)
-- 🚀 **Phase 3B Track B (Technical Feasibility Spike):**
-  - ✅ **Deliverable 1:** API Access & Capability Matrix (`02-Product-Teardown/api-access-and-capability-matrix.md`) — Live API traces blocked; Path B (Preflight Validator) emerges as primary candidate.
-  - ✅ **Deliverable 2:** Development Store Experiment Guide & Test Script (`03-Discovery-Plan/development-store-experiment-guide.md`, `scratch/test-flow-api.js`).
-- 🚀 **Phase 3B Track A (Customer Discovery):**
-  - ✅ **Deliverable 3:** Participant Shortlist, Sourcing Queries & Screening Scorecard (`03-Discovery-Plan/merchant-recruitment-shortlist.md`).
-  - ✅ **Deliverable 4 (Interview Kit):** Neutral Capture Sheets for M1 (`interview-capture-sheet-m1.md`), M2 (`interview-capture-sheet-m2.md`), and Cross-Interview Synthesis Template (`cross-interview-evidence-synthesis-m1-m2.md`) — strictly maintained as blank templates until real conversations occur.
-  - 🎯 **Next Priority:** Execute interviews with first 2 merchants & 2 developers using 7 incident-reconstruction questions.
+- ✅ **Phase 3B Feasibility Spike & Interview Kit** — Complete (`api-access-and-capability-matrix.md`, `interview-capture-sheet-m1.md`, `m2.md`, `cross-interview-evidence-synthesis-m1-m2.md`)
+- 🏆 **The 5 Fast-Track Final Deliverables (`04-Deliverables/`):**
+  - ✅ **Deliverable 1: Final Product Strategy** (`01-final-product-strategy.md`) — Teardown of Shopify's 35% activation deficit, 5 friction clusters, and strategic pivot to preflight validation.
+  - ✅ **Deliverable 2: MVP & PRD** (`02-prd-flowlens-preflight-validator.md`) — Comprehensive PRD specifying deterministic AST rules (L-01 to L-05), LLM explainer layer, and synthetic scenario runner.
+  - ✅ **Deliverable 3: Clickable Prototype** (`03-prototype/index.html`) — Interactive, responsive prototype in Oxford Midnight and cream with dynamic DAG nodes, plain-language alerts, and live scenario simulator.
+  - ✅ **Deliverable 4: Evaluation & Business Strategy** (`04-evaluation-and-business-strategy.md`) — 10-scenario golden benchmark (100% precision, 0% hallucinations), metrics tree, and tiered SaaS pricing.
+  - ✅ **Deliverable 5: Portfolio Case Study** (`05-portfolio-case-study.md`) — End-to-end publishable AI PM case study highlighting senior-level problem selection and technical trade-offs.

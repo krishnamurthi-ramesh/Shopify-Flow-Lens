@@ -95,3 +95,4 @@ Choose one after evidence review:
 ## 8. Limits
 
 Two interviews are useful for refining the problem and discovering missing questions. They do not establish prevalence, segment-level generalisability, statistical confidence, or willingness to pay. Do not present the two-person sample as market validation.
+

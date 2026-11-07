@@ -29,3 +29,4 @@
 - Current GraphQL Admin API reference: https://shopify.dev/docs/api/admin-graphql/latest
 - Flow trigger receive mutation: https://shopify.dev/docs/api/admin-graphql/latest/mutations/flowTriggerReceive
 - Preview API data in Flow: https://help.shopify.com/en/manual/shopify-flow/create/preview-data
+

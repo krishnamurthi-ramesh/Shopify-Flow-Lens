@@ -160,3 +160,4 @@ Do not create live cross-border orders or trigger live carrier, customer-message
 ## 6. Do not conclude from this interview alone
 
 This interview cannot establish how common ISO-code mismatches are, whether cross-border merchants are a priority market, willingness to pay, or that a standalone validator is required. A participant who has never experienced this failure is useful counterevidence.
+
