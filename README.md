@@ -32,14 +32,16 @@ Project-4-Shopify-Flow-AI/
 │   ├── problem-discovery-and-user-segmentation.md        ← Evidence ledger (E1–E17), behavioral segments, JTBD
 │   ├── reddit-evidence-log-01.md                         ← Passive Reddit signals (R1–R7): run visibility, mobile, Sidekick
 │   ├── reddit-evidence-log-02.md                         ← Passive Reddit signals (R8–R17): race conditions, backfill, ISO codes
-│   └── reddit-evidence-log-03.md                         ← Passive Reddit signals (R18–R25): app scopes, consent, template ceiling
+│   ├── reddit-evidence-log-03.md                         ← Passive Reddit signals (R18–R25): app scopes, consent, template ceiling
+│   └── evidence-audit-r1-r25.md                          ← Research quality audit: independence, vendor bias & verified docs
 ├── 02-Product-Teardown/
 │   ├── shopify-flow-sidekick-deep-dive.md                ← Documented user journey, funnels, AI architecture
 │   ├── opportunity-hypotheses.md                         ← 5 initial opportunity hypotheses (H1–H5)
 │   └── opportunity-solution-tree-and-mvp-decision.md     ← Phase 4: Opportunity Solution Tree & MVP decision gate
 └── 03-Discovery-Plan/
     ├── merchant-interview-guide.md                       ← Semi-structured 30-min interview guide & note template
-    └── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
+    ├── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
+    └── phase-3b-targeted-validation-plan.md              ← Dual-track validation protocol & technical feasibility spike
 ```
 
 ---
