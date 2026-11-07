@@ -38,13 +38,17 @@ Project-4-Shopify-Flow-AI/
 │   ├── shopify-flow-sidekick-deep-dive.md                ← Documented user journey, funnels, AI architecture
 │   ├── opportunity-hypotheses.md                         ← 5 initial opportunity hypotheses (H1–H5)
 │   ├── opportunity-solution-tree-and-mvp-decision.md     ← Phase 4: Opportunity Solution Tree & MVP decision gate
-│   └── api-access-and-capability-matrix.md               ← Track B: Feasibility audit of Admin UI, GraphQL & extensions
+│   ├── api-access-and-capability-matrix.md               ← Track B: Feasibility audit of Admin UI, GraphQL & extensions
+│   └── technical-evidence-caveat-api-boundaries.md       ← Rigorous wording on documented facts vs. inferences
 └── 03-Discovery-Plan/
     ├── merchant-interview-guide.md                       ← Semi-structured 30-min interview guide & note template
     ├── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
     ├── phase-3b-targeted-validation-plan.md              ← Dual-track validation protocol & technical feasibility spike
     ├── development-store-experiment-guide.md             ← Track B: 7-step feasibility experiment & verification script
-    └── merchant-recruitment-shortlist.md                 ← Track A: Sourcing, outreach templates & screening scorecard
+    ├── merchant-recruitment-shortlist.md                 ← Track A: Sourcing, outreach templates & screening scorecard
+    ├── interview-capture-sheet-m1.md                     ← Participant M1 (Apparel Ops Lead) incident sheet [BLANK]
+    ├── interview-capture-sheet-m2.md                     ← Participant M2 (Cross-Border Cosmetics) incident sheet [BLANK]
+    └── cross-interview-evidence-synthesis-m1-m2.md       ← Cross-interview comparison & hypothesis gate [BLANK]
 ```
 
 ---
@@ -102,4 +106,5 @@ From our 25-discussion evidence base, we reframed the product goal from *"genera
   - ✅ **Deliverable 2:** Development Store Experiment Guide & Test Script (`03-Discovery-Plan/development-store-experiment-guide.md`, `scratch/test-flow-api.js`).
 - 🚀 **Phase 3B Track A (Customer Discovery):**
   - ✅ **Deliverable 3:** Participant Shortlist, Sourcing Queries & Screening Scorecard (`03-Discovery-Plan/merchant-recruitment-shortlist.md`).
+  - ✅ **Deliverable 4 (Interview Kit):** Neutral Capture Sheets for M1 (`interview-capture-sheet-m1.md`), M2 (`interview-capture-sheet-m2.md`), and Cross-Interview Synthesis Template (`cross-interview-evidence-synthesis-m1-m2.md`) — strictly maintained as blank templates until real conversations occur.
   - 🎯 **Next Priority:** Execute interviews with first 2 merchants & 2 developers using 7 incident-reconstruction questions.

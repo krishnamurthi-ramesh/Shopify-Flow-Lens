@@ -91,3 +91,4 @@ Before booking, verify that each respondent meets these 3 criteria:
 1. **Active Automation Operator:** Personally creates, modifies, or investigates Shopify Flow workflows (not just a high-level executive who delegates).
 2. **Recent Incident Experience:** Can recall a specific instance in the last 60 days where an automation did not produce the expected business outcome.
 3. **No Commercial Conflict:** Not an employee of Shopify or a direct competitor promoting a specific proprietary observability tool.
+

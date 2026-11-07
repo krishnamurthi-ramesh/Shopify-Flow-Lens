@@ -115,3 +115,4 @@ Official documentation confirms that this action returns a single `getWorkflowRu
 
 ### Recommendation for Decision Gate:
 Proceed with **Path B (Preflight Validator & Linter)** as the primary product candidate, while validating through Track A interviews whether preventing silent condition failures pre-activation addresses $\ge 80\%$ of merchant operational anxiety.
+
