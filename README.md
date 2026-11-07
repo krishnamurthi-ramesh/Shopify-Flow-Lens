@@ -2,7 +2,7 @@
 
 [![Role](https://img.shields.io/badge/Role-AI_Product_Manager-7c3aed?style=flat-square)]()
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
-[![Status](https://img.shields.io/badge/Status-Phase_3_Passive_Discovery_Active-blue?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Phase_3A_Passive_Discovery_Complete-008060?style=flat-square)]()
 
 An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes testable opportunity hypotheses grounded in real merchant evidence.
 
@@ -30,9 +30,9 @@ Project-4-Shopify-Flow-AI/
 ├── README.md                                      ← You are here: Teardown synthesis & executive brief
 ├── 01-Research/
 │   ├── problem-discovery-and-user-segmentation.md ← Evidence ledger (E1–E17), behavioral segments, JTBD
-│   ├── reddit-evidence-log-01.md                  ← Initial passive Reddit signals (R1–R7)
-│   └── reddit-evidence-log-02.md                  ← Expanded passive Reddit signals (R8–R17): race conditions,
-│                                                     backfilling barriers, silent failures, Sidekick memory
+│   ├── reddit-evidence-log-01.md                  ← Passive Reddit signals (R1–R7): run visibility, mobile, Sidekick
+│   ├── reddit-evidence-log-02.md                  ← Passive Reddit signals (R8–R17): race conditions, backfill, ISO codes
+│   └── reddit-evidence-log-03.md                  ← Passive Reddit signals (R18–R25): app scopes, consent, template ceiling
 ├── 02-Product-Teardown/
 │   ├── shopify-flow-sidekick-deep-dive.md         ← Documented user journey, funnels, AI architecture
 │   └── opportunity-hypotheses.md                  ← 5 testable opportunity hypotheses (H1–H5)
@@ -59,6 +59,18 @@ Our analysis distinguishes verified first-party disclosures from product hypothe
 
 ---
 
+## 🔍 Qualitative Discovery: 25 Community Discussions Analyzed (R1–R25)
+
+We analyzed 25 authentic merchant and developer discussions across `r/shopify`, `r/shopifyDev`, and `r/AutomateShopify`:
+
+1. **Outcome Observability & Silent Failures (6 discussions):** Workflows appear active/green, but silently fail on string mismatches (`USA` vs `US`), stale data after delays, or race conditions between payment capture and cancellation.
+2. **The "Template Ceiling" & Editing Friction (5 discussions):** Pre-built templates work well for simple tasks, but modifying them or adding compound conditions causes merchants to hit a wall and abandon.
+3. **Connector & Scope Fragility (5 discussions):** OAuth scope expirations, marketing consent blocks (Klaviyo), Liquid syntax crashes in payloads (Gorgias), and test orders accidentally triggering 3PLs.
+4. **Historical Backfilling Barrier (3 discussions):** Inability to run a new or edited rule on past orders without manual CSV exports.
+5. **Sidekick Trust & Diagnostics (6 discussions):** Fast drafting, but opaque condition failure diagnostics during testing, arithmetic hallucinations, and session memory loss.
+
+---
+
 ## 💡 The 5 Testable Opportunity Hypotheses
 
 | Hypothesis ID | Title | Root Friction Addressed | Proposed Validation Approach |
@@ -71,9 +83,8 @@ Our analysis distinguishes verified first-party disclosures from product hypothe
 
 ---
 
-## 🧭 Active Phase: Phase 3 — Customer Discovery
-
-Current milestone is **Phase 3A: Passive Discovery via Public Merchant Discussions**:
-- **Log 01 (R1–R7):** [`01-Research/reddit-evidence-log-01.md`](./01-Research/reddit-evidence-log-01.md) — Workflow run visibility, mobile warehouse needs, Sidekick capability shifts, and positive Flow use cases.
-- **Log 02 (R8–R17):** [`01-Research/reddit-evidence-log-02.md`](./01-Research/reddit-evidence-log-02.md) — Race conditions (capture vs cancel), backfilling barriers, silent string condition failures, test orders poisoning 3PLs, Sidekick session memory loss, and Zapier-to-Flow economic migration.
-- **Cumulative Evidence:** 17 public discussions analyzed and cross-referenced against Shopify's engineering disclosures.
+## 🧭 Milestone Status: Ready for Phase 3B (Primary Merchant Interviews)
+- ✅ **Phase 1: Problem Discovery & User Segmentation** — Complete (`01-Research`)
+- ✅ **Phase 2: Product & AI Architecture Teardown** — Complete (`02-Product-Teardown`)
+- ✅ **Phase 3A: Passive Discovery (25 Reddit Threads)** — Complete (`reddit-evidence-log-01.md`, `02.md`, `03.md`)
+- 🎯 **Next Milestone:** Phase 3B — Active Merchant Interviews & Opportunity Scoring Tree
