@@ -1,157 +1,88 @@
-# Product Requirements Document (PRD): FlowLens Preflight Validator
+# Product Requirements Document (PRD): FlowLens Preflight Analyzer
 
 **Product Name:** FlowLens  
-**Release Target:** MVP v1.0 (Preflight Linter & Risk Inspector)  
+**Release Target:** Concept Prototype v1.0 (Read-Only Preflight Analyzer)  
 **Author:** R. Krishnamurthi (AI Product Manager)  
-**Status:** Approved for Prototype Build (Deliverable 2)  
+**Status:** Approved for Concept Prototype (Post-Audit Revision)  
 **Last Updated:** November 2026  
 
 ---
 
 ## 1. Executive Summary & Product Vision
 
-Shopify merchants rely on Shopify Flow to automate critical business operations (fraud detection, VIP tagging, fulfillment routing). However, Shopify Engineering disclosed that fine-tuned workflow generation suffered a **35% lower activation rate** in production, driven by complex condition patterns (16%) and missing configuration parameters (25%). Furthermore, our study of 25 merchant discussions revealed that automations frequently fail silently due to semantic data mismatches (e.g., `"USA"` vs `"US"` ISO-2) or unhandled edge cases.
+Shopify merchants rely on Shopify Flow to automate critical business operations. However, Shopify Engineering disclosed that fine-tuned workflow generation suffered a **35% lower activation rate** in production, driven by complex condition patterns (16%) and missing configuration parameters (25%). Furthermore, merchant discussions highlight that automations can fail silently due to subtle data formatting mismatches (e.g., `"USA"` vs ISO-2 `"US"`) or unhandled configuration edge cases.
 
-**FlowLens** is a pre-activation workflow linter and diagnostic simulator. It ingests exported Shopify Flow workflow definitions (`.flow` JSON schemas), statically analyzes the trigger-condition-action DAG, detects semantic logic errors and race condition hazards, simulates representative edge-case order payloads, and provides plain-language diagnostic explanations and verified JSON diffs before automations touch live customer orders.
+**FlowLens** is a read-only, pre-activation workflow analyzer and linting inspector. It ingests exported Shopify Flow workflow definitions (`.flow` JSON schemas), statically analyzes the trigger-condition-action DAG, detects schema-aware configuration hazards and pre-Wait data dependencies, simulates user-defined or synthetic test scenarios, and presents recommended diffs for human review before automations touch live customer orders.
 
 ---
 
 ## 2. Goals & Non-Goals
 
 ### Core Goals:
-1. **Zero-Blast-Radius Preflight:** Enable operators to catch silent semantic errors and unhandled branch terminations before turning a workflow on.
-2. **High-Precision Linting ($\ge 95\%$ accuracy on seeded rules):** Use deterministic AST parsing to detect known failure patterns (ISO code mismatches, missing delay guards, null Liquid tokens).
-3. **Actionable Plain-Language Explanations:** Translate obscure schema checks into merchant-comprehensible operational risks and concrete remediation steps.
-4. **Interactive Scenario Simulation:** Generate synthetic order payloads (Passing, Failing, Edge Case) to let merchants visually inspect how their workflow evaluates before deployment.
+1. **Preflight Visibility:** Enable operators to catch static configuration errors and pre-Wait data dependencies before activating a workflow.
+2. **Schema-Aware Linting:** Use deterministic static analysis to detect known Shopify Flow constraints (ISO alpha-2 compliance, pre-Wait data action output loss, self-triggering update loops).
+3. **Transparent Explanations:** Ground explanations in verified Shopify documentation and specific AST rule triggers, clearly indicating uncertainty when schemas are unverified.
+4. **Interactive Scenario Simulation:** Enable visual tracing of representative order payloads against the workflow DAG.
 
 ### Explicit Non-Goals (Out of Scope for MVP):
-- ❌ **No Text-to-Workflow Generation:** Sidekick already generates workflows; FlowLens does not compete on text-to-DAG generation.
-- ❌ **No Native Live Webhook Interception:** As demonstrated in our API feasibility spike, Shopify does not expose a public step-level execution trace API. FlowLens will not promise live webhook routing or runtime interceptors.
-- ❌ **No Automated Store Writes without Human Approval:** FlowLens provides suggested JSON diffs, but never modifies store data directly.
+- ❌ **No Text-to-Workflow Generation:** Sidekick already generates workflows; FlowLens does not compete on text-to-DAG authoring.
+- ❌ **No Live Production Monitoring:** Shopify's public API does not expose historical step-level execution traces. FlowLens is strictly an offline pre-activation tool.
+- ❌ **No Automatic Store Mutation:** FlowLens does not directly write to merchant stores or auto-activate workflows. All changes are exported as reviewable diffs.
+- ❌ **No Production Shopify App Integration:** The v1.0 deliverable is a front-end concept prototype demonstrated on representative synthetic fixtures.
 
 ---
 
-## 3. User Personas & Core User Journey
+## 3. User Persona (Illustrative Archetype)
 
-### Primary Persona: Sarah — Head of Ecommerce Operations
-- **Store Profile:** $2M GMV scaling apparel brand; 14 active Flow automations; connected to ShipStation and Klaviyo.
-- **Pain Point:** Created a workflow to tag international VIPs; used country string `"United States"`; workflow evaluated to False for all US orders; zero alerts were triggered until the warehouse shipped standard parcels.
-
-### The 5-Step End-to-End User Journey:
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│ 1. Import Flow  │ ──> │ 2. AST Parse &  │ ──> │ 3. Interactive  │
-│    (Upload JSON │     │    Lint Engine  │     │    DAG & Alerts │
-│    or Template) │     │    Execution    │     │    Visualization│
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-                                                         │
-                                                         ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│ 5. Export Clean │ <── │ 4. Plain-Lang   │ <── │ 4. Seeded Edge  │
-│    Workflow     │     │    Remediation  │     │    Scenario     │
-│    Schema JSON  │     │    & Diff Review│     │    Simulation   │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-```
+### Sarah — Scaling Ecommerce Operations Lead
+- *Note: Fictional illustrative persona derived from merchant operational profiles; not an empirical study participant.*
+- **Store Profile:** Scaling D2C brand; 10–20 active Flow automations; connected to shipping and messaging apps.
+- **Job-to-be-Done:** When updating a complex order workflow, verify that conditions and data dependencies match Shopify's data model before activation.
 
 ---
 
-## 4. Functional Requirements & Feature Specifications
+## 4. Functional Requirements & Revised Linting Ruleset
 
-### FR-1: Workflow Schema Ingestion & DAG Parser
-- **Requirement:** Ingest Shopify Flow exported workflow JSON or standard pre-built templates.
-- **Parsing Logic:** Parse the JSON into an Abstract Syntax Tree (AST) representing:
-  - `trigger`: Resource type (`order`, `customer`, `inventory`), event type, payload schema.
-  - `conditions`: Field references, comparison operators (`EQUAL_TO`, `CONTAINS`, `GREATER_THAN`), target literal values.
-  - `actions`: Target application (Shopify native, Klaviyo, Slack), action type, required inputs.
-- **Acceptance Criteria:** Successfully parse valid Flow schema exports and flag malformed JSON with specific line-level syntax errors.
+### FR-1: Schema Ingestion & DAG Representation
+- **Requirement:** Ingest exported Shopify Flow JSON definitions. Parse triggers, conditions, actions, and connections into a visual node graph.
+- **Handling Incomplete Schemas:** When connector schemas or custom field definitions are unavailable, mark affected nodes as "Unverified Connector Schema" rather than emitting a false pass.
 
 ---
 
-### FR-2: Deterministic Linting Engine (The 5 Core Rules)
-The linter executes deterministic static checks against known failure categories:
+### FR-2: The 5 Revised Linting Rules
 
-| Rule ID | Rule Name | Description | Severity | Example Violation |
+| Rule ID | Rule Name | Description | Severity | Expected Behavior |
 |---|---|---|---|---|
-| **L-01** | **Country ISO-2 Compliance** | Shopify addresses store country codes as 2-letter ISO (`US`, `CA`). Flags full country names or 3-letter codes. | **CRITICAL** | `shippingAddress.countryCode == "USA"` |
-| **L-02** | **Stale Data After Delay** | Workflows with `Wait` actions (e.g., 2 hours) followed by state checks (e.g., `financialStatus == "PAID"`) without a "Get Order Data" refresh action. | **HIGH** | Wait 3 days $\rightarrow$ Check tag (evaluates stale memory). |
-| **L-03** | **Unhandled False Termination** | High-consequence conditions (fraud, VIP routing) where the `False` branch has no fallback or notification. | **MEDIUM** | If high fraud risk $\rightarrow$ Hold order. Else $\rightarrow$ (Terminates silently). |
-| **L-04** | **Null Liquid Token Danger** | Liquid placeholders in action payloads referencing optional fields without default fallbacks. | **HIGH** | `{{ order.customer.defaultAddress.phone }}` without `\| default: ''`. |
-| **L-05** | **Idempotency Loop Guard** | Workflows triggered by `Order updated` that execute `Update order` actions without an exit condition, risking recursion. | **CRITICAL** | `Order updated` $\rightarrow$ `Add tag` (triggers self in loop). |
+| **L-01** | **Schema-Aware Country Code Check** | Validates fields whose Shopify schema type is strictly ISO-3166-1 alpha-2 (e.g., `shippingAddress.countryCode`). | **WARNING** | Flags 3-letter codes (`"USA"`) or full names (`"United States"`) compared against alpha-2 fields. |
+| **L-02** | **Pre-Wait Data Action Output Misuse** | Shopify refreshes core store data after a Wait step, but **discards outputs from `Get`, `Sum`, or `Count` data actions** executed before the Wait. | **HIGH RISK** | Flags any step *after* a `Wait` node that references pre-Wait data variables, recommending a repeat `Get data` step. |
+| **L-03** | **Informational No-Action Branch Note** | Shopify officially supports intentional no-op branches when conditions are unmet. | **INFORMATIONAL** | Explains that the False branch terminates without action, letting the merchant verify if this was intentional. |
+| **L-04** | **Liquid Syntax & Schema Validation** | Checks Liquid tokens in action payloads for valid delimiters and null safety. | **WARNING** | Flags unclosed Liquid tags or references to non-existent schema properties. |
+| **L-05** | **Potential Self-Triggering Cycle Detection** | Heuristic checking for workflows triggered by a resource event (e.g., `Order updated`) that modify the same resource without an idempotency guard. | **WARNING** | Warns of potential recursive triggering and API throttling risks. |
 
 ---
 
-### FR-3: Plain-Language Diagnostic Explainer (AI Layer)
-- **Role of AI:** LLMs are **NOT** used to evaluate condition logic (which causes hallucinations). Instead, deterministic linting outputs are passed to a grounded LLM explainer.
-- **Input Payload to LLM:**
-  ```json
-  {
-    "rule_triggered": "L-01: Country ISO-2 Compliance",
-    "field": "order.shippingAddress.countryCode",
-    "operator": "EQUAL_TO",
-    "actual_literal": "USA",
-    "expected_format": "ISO-3166-1 alpha-2 (e.g. 'US')",
-    "workflow_context": "Tag orders for US Domestic Priority Shipping"
-  }
-  ```
-- **Output Generated:**
-  > *"**Critical Risk:** In Shopify Flow, `shippingAddress.countryCode` always yields a 2-letter code like `'US'`. Checking against `'USA'` will evaluate to False on 100% of US orders. This workflow will silently skip tagging all domestic orders."*
+### FR-3: Grounded Diagnostic Explainer
+- **Architectural Guardrail:** LLM explanations must be strictly bounded by the deterministic AST rule outputs. The system provides:
+  1. The triggered rule ID and exact JSON path.
+  2. The verified Shopify documentation reference.
+  3. A suggested reviewable JSON diff.
+- *Explicit Limitation:* Explanations should communicate uncertainty where third-party connector schemas are unverified.
 
 ---
 
-### FR-4: Synthetic Scenario Generation & Simulation
-- **Requirement:** For any uploaded workflow, FlowLens automatically generates 3 synthetic order payloads:
-  1. **Nominal Pass Scenario:** Payload where all conditions are met; executes primary action.
-  2. **Nominal Fail Scenario:** Payload where a condition is intentionally unmet; traces fallback path.
-  3. **Adversarial Edge Case:** Payload testing boundary conditions (e.g., lowercase strings, missing shipping address, zero total price).
-- **Interactive Visualization:** Merchants can click through the scenarios and watch the DAG nodes highlight dynamically.
+### FR-4: Synthetic Scenario Simulation
+- Evaluates supplied or generated order payloads against the workflow logic.
+- Renders the simulated path taken (nodes evaluated, branches chosen, actions that would fire).
+- Discloses external actions (e.g., third-party webhooks) that cannot be simulated offline.
 
 ---
 
-### FR-5: Recommended Diff & Export
-- **Requirement:** When an issue is identified, FlowLens renders a side-by-side JSON diff:
-  ```diff
-  - "value": "USA"
-  + "value": "US"
-  ```
-- **Remediation Action:** One-click "Apply Remediation" button that updates the AST and allows the user to download the corrected `.flow` JSON file ready for import into Shopify Admin.
+## 5. UI/UX Design Specifications (Concept Prototype)
 
----
-
-## 5. UI/UX Design Specifications (Dribbble-Inspired High Craft)
-
-Following the editorial, dark Oxford Midnight aesthetic (`#0b0f19`):
-1. **Top Bar:** Project metadata, Flow name, "Run Preflight Audit" CTA, Health Score Indicator (0–100%).
-2. **Left Panel (The Visual DAG):** Interactive node canvas showing Trigger $\rightarrow$ Condition $\rightarrow$ Action nodes with color-coded status rings (Green = Clean, Yellow = Warning, Red = Critical Bug).
-3. **Right Panel (The Diagnostic Inspector):**
-   - Severity Alert Cards (Critical, Warning, Optimization).
-   - "Why this fails" plain-English breakdown.
-   - Interactive Scenario Runner with tabs: `Scenario 1: California Order`, `Scenario 2: Toronto Order`, `Scenario 3: Null Phone`.
-   - Side-by-side Schema Diff viewer with "Download Fixed Flow" CTA.
-
----
-
-## 6. Technical Architecture & Guardrails
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                 FlowLens Architecture Pipeline              │
-│                                                             │
-│   [ Uploaded Flow JSON ]                                    │
-│             │                                               │
-│             ▼                                               │
-│   [ Deterministic AST Parser & Schema Validator ]          │
-│             │                                               │
-│             ├──> [ Rule Engine: L-01 to L-05 ] (Zero LLM)   │
-│             │            │                                  │
-│             │            ▼ (Lint Findings JSON)             │
-│             └──> [ LLM Explanation Synthesis Layer ]        │
-│                          │                                  │
-│                          ▼                                  │
-│   [ Interactive UI: Visual DAG + Risk Alerts + Fix Diff ]   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Safety & Guardrail Rules:
-1. **Zero Hallucination Policy:** The LLM can only format and explain errors surfaced by the deterministic AST engine. It cannot invent errors not identified by AST rules.
-2. **Data Privacy:** FlowLens processes schemas in-browser or in ephemeral memory. No store customer data or credentials are required or stored.
+Following the dark slate / Oxford Midnight aesthetic (`#070a11` / `#0b0f19`) seen in advanced AI operations tools (e.g., Revka Agent OS):
+1. **Top Bar:** Workflow title, file type, Preflight Status (Issue Counts: e.g., `1 Fatal Defect`, `1 Informational Note`), and Remediation CTA.
+2. **Left Canvas (DAG View):** Interactive node canvas displaying Trigger $\rightarrow$ Condition $\rightarrow$ Action nodes with color-coded status borders.
+3. **Right Inspector:**
+   - Detailed rule findings with documentation citations.
+   - Interactive Scenario Runner: Click between nominal pass, nominal fail, and edge-case payloads.
+   - Reviewable Schema Diff viewer.

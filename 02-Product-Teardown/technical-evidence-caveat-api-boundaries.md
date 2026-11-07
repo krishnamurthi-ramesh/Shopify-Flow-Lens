@@ -1,32 +1,43 @@
-# Shopify Flow — Technical Evidence Caveat (current documentation review)
+# Shopify Flow — Technical Evidence Caveat & API Boundaries (Updated Nov 2026)
 
-**Purpose:** Keep technical claims in the interview and MVP decision work accurate.
+**Purpose:** Maintain absolute technical accuracy regarding Shopify Flow capabilities, API access surfaces, and `.flow` schemas.
 
-## What current Shopify documentation supports
+---
 
-1. Shopify's Flow monitoring documentation says merchants can inspect workflow runs in the Flow app. Run details include a workflow preview with the path taken, step results, logs and step data. Access to step details depends on staff permissions. Runs are retained for 14 days after completion.
-2. The `Get workflow run data` Flow action returns a single run's documented metadata: run GID, legacy resource ID, retry count, start time, trigger-event information, URL and workflow metadata. Its documented returned data does not list per-condition results, step IDs or intermediate step payloads.
-3. Shopify's Flow developer documentation lists trigger, condition, action and template task types, and explicitly says app developers cannot create a condition task. Apps can build Flow triggers and actions.
-4. Shopify's public Admin GraphQL documentation reviewed for this note does not document a query for `FlowRun` or step-level Flow execution traces. This is a documentation finding, not a proof that every possible internal or partner-only interface is absent.
+## 1. What Official Shopify Documentation Confirms (Verified Nov 2026)
 
-## What remains an inference / experiment
+### A. Native Workflow Testing & Run History
+- **Pre-Activation Testing Exists:** Shopify Flow natively supports workflow testing using recorded store events, simulated events using real store data, and Sidekick-generated simulated events. Test runs execute logic paths and render previews without mutating live store data. However, external-service actions cannot always be simulated, and incomplete steps cannot be tested.
+- **Run History:** Completed workflow runs are retained for 14 days in Shopify Admin. Staff with permissions can view the DAG visual path, step results, execution logs, and step data snapshots.
+- **Defensible Framing:** FlowLens does not claim that Shopify lacks testing or run history. Rather, FlowLens addresses **pre-activation configuration risks, schema mismatches, and unhandled external action coverage** before a workflow is published.
 
-- Whether a third-party app can access any additional run data through currently available public or partner APIs must be tested against the actual versioned schema and authorised app scopes.
-- Do not state categorically that the Admin UI is "exclusively sandboxed" or that no programmatic path exists unless a documented schema/introspection experiment supports it.
-- A custom Flow action can receive its own invocation payload when a workflow reaches that action. Because an app cannot create a custom condition task, such instrumentation should not be described as observing all condition evaluations or false branches automatically.
-- A preflight linter based on a workflow export is only useful if a supported, merchant-authorised export/import or data-capture path is established. Do not assume an app can read arbitrary workflow definitions.
+### B. Wait Action & Data Freshness Semantics
+- **Store Data IS Refreshed:** When a `Wait` action concludes, Shopify Flow automatically refreshes top-level store data (e.g., Order, Customer) before continuing.
+- **The True Limitation (Rule L-02):** Outputs from `Get`, `Sum`, or `Count` data actions executed *before* a Wait step are **discarded and unavailable after the Wait step**. If downstream actions or conditions attempt to reference pre-Wait `Get data` variables, the step fails or lacks data. A repeat `Get data` action must be added after the Wait action.
 
-## Recommended wording for the project
+### C. Condition Branching Semantics
+- **No-Action Branches Are Often Intentional:** A condition branch terminating without an action (no-op) is explicitly documented by Shopify as standard behavior when a condition is unmet. FlowLens must treat unhandled False branches as **informational notes**, not fatal errors.
 
-"Shopify documents step-level run diagnostics in the native Flow interface. Its documented Get workflow run data action exposes run-level metadata rather than the full step trace. The public Admin GraphQL references reviewed do not document a FlowRun query or step-level execution-trace resource. Therefore, independent live diagnostics are an unresolved feasibility risk pending version-specific schema introspection and a development-store experiment."
+### D. The October 28, 2026 Shopify API Announcement
+- Shopify announced automation management capabilities through its AI Toolkit:
+  - `automationWorkflow` and `automationWorkflows` queries in the unstable GraphQL Admin API return workflow step DAGs, links, custom fields, and validation errors.
+  - `automationFlowFileParse` parses an exported `.flow` file (including checksum verification) into a JSON automation configuration without saving the workflow.
+- **Access Restrictions:** These APIs require the `write_automations` scope. Shopify explicitly restricts third-party apps from directly using these underlying APIs without direct Shopify approval.
+- **Implication:** Third-party programmatic API access remains gated. However, a **merchant-controlled `.flow` file upload and preflight analysis tool** is fully aligned with Shopify's supported architecture.
 
-## Official sources
+---
 
-- Monitoring workflow runs: https://help.shopify.com/en/manual/shopify-flow/manage/monitor
-- Get workflow run data: https://help.shopify.com/en/manual/shopify-flow/reference/actions/get-workflow-run-data
-- About Flow extensions: https://shopify.dev/docs/apps/build/flow
-- Flow and GraphQL Admin API: https://help.shopify.com/en/manual/shopify-flow/getting-started/concepts/admin-api
-- Current GraphQL Admin API reference: https://shopify.dev/docs/api/admin-graphql/latest
-- Flow trigger receive mutation: https://shopify.dev/docs/api/admin-graphql/latest/mutations/flowTriggerReceive
-- Preview API data in Flow: https://help.shopify.com/en/manual/shopify-flow/create/preview-data
+## 2. Access Surface Capability Matrix
 
+| Access Surface | Official Capability | Diagnostic Limitation | Feasibility Finding |
+|---|---|---|---|
+| **Shopify Admin UI** | DAG execution paths, step-level condition states, 14-day logs. | Sandboxed server-side for authenticated staff. | Inaccessible to third-party apps programmatically. |
+| **GraphQL Admin API (Public)** | `flowTriggerReceive` mutation to trigger workflows. | No public query exists for historical `FlowRun` step execution traces. | Blocks live post-execution external monitoring. |
+| **Automation Admin API (Unstable / Oct 28)** | `automationWorkflow`, `automationFlowFileParse`. | Gated behind `write_automations`; third-party access restricted. | Validates `.flow` parsing architecture, but requires file-upload mode for third-party tools. |
+| **Flow Extensions** | `flow_action` and `flow_trigger`. | No `flow_condition` extension exists. Custom actions only run if conditions pass. | Cannot observe condition evaluations or failed branches. |
+
+---
+
+## 3. Recommended Project Wording
+
+> "Shopify natively provides step-level run history and pre-activation testing (using recorded, store, or Sidekick events). On October 28, 2026, Shopify announced unstable automation APIs (including `automationFlowFileParse`), but restricts direct third-party access. Furthermore, no public API exposes live step-level condition execution traces. FlowLens is therefore designed as an offline, read-only preflight analyzer that inspects merchant-exported `.flow` schemas to detect schema-aware configuration risks, pre-Wait data action output loss, and recursion hazards before activation."

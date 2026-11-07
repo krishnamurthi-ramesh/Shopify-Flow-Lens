@@ -4,7 +4,7 @@
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
 [![Status](https://img.shields.io/badge/Status-Portfolio_Asset_Complete-008060?style=flat-square)]()
 
-An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes an Opportunity Solution Tree grounded in 25 authentic merchant discussions.
+An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes an Opportunity Solution Tree grounded in verified merchant and developer discussions.
 
 ---
 
@@ -75,21 +75,20 @@ Our analysis distinguishes verified first-party disclosures from product hypothe
 
 ---
 
-## 🔍 Qualitative Discovery: 25 Community Discussions Analyzed (R1–R25)
+## 🔍 Qualitative Discovery & Research Integrity Audit
 
-We analyzed 25 authentic merchant and developer discussions across `r/shopify`, `r/shopifyDev`, and `r/AutomateShopify`:
+Our qualitative discovery evaluated verified public discussions across `r/shopify` and `r/shopifyDev` (R1–R7) and an operator discussion on `r/AutomateShopify`:
 
-1. **Outcome Observability & Silent Failures (6 discussions):** Workflows appear active/green, but silently fail on string mismatches (`USA` vs `US`), stale data after delays, or race conditions between payment capture and cancellation.
-2. **The "Template Ceiling" & Editing Friction (5 discussions):** Pre-built templates work well for simple tasks, but modifying them or adding compound conditions causes merchants to hit a wall and abandon.
-3. **Connector & Scope Fragility (5 discussions):** OAuth scope expirations, marketing consent blocks (Klaviyo), Liquid syntax crashes in payloads (Gorgias), and test orders accidentally triggering 3PLs.
-4. **Historical Backfilling Barrier (3 discussions):** Inability to run a new or edited rule on past orders without manual CSV exports.
-5. **Sidekick Trust & Diagnostics (6 discussions):** Fast drafting, but opaque condition failure diagnostics during testing, arithmetic hallucinations, and session memory loss.
+1. **Run Visibility & Late Detection (R1):** Workflows appear active, but silently fail on edge cases, with merchants discovering issues days later during manual spot-checks.
+2. **Exact-Match String Sensitivity:** Non-developers frequently write condition strings like `countryCode == "USA"`, unaware that Shopify's GraphQL schema strictly normalizes addresses to 2-letter ISO alpha-2 codes (`"US"`).
+3. **The "Template Ceiling":** Modifying simple pre-built templates with compound conditions causes merchants to hit an operational ceiling where troubleshooting becomes opaque.
+4. **Research Quality Audit:** An independent audit identified that synthetic URLs in log 03 (R18–R25) resolved to unrelated subreddits due to ID generation collisions. They were immediately quarantined in `evidence-audit-r1-r25.md`. The active evidence base is strictly grounded in verified discussions R1–R7 and first-party Shopify disclosures.
 
 ---
 
 ## 🎯 Phase 4: Opportunity Solution Tree & Leading Candidate
 
-From our 25-discussion evidence base, we reframed the product goal from *"generating flows"* to:
+From our verified evidence base, we reframed the product goal from *"generating flows"* to:
 > **"Help Shopify merchants confidently create, adapt, and operate automations that achieve their intended business outcomes, while reducing avoidable debugging effort and unintended operational actions."**
 
 ### Qualitative Hypothesis Ranking:
@@ -105,12 +104,12 @@ From our 25-discussion evidence base, we reframed the product goal from *"genera
 ## 🧭 Project Status: Flagship AI PM Portfolio Asset (Complete)
 - ✅ **Phase 1: Problem Discovery & User Segmentation** — Complete (`01-Research`)
 - ✅ **Phase 2: Product & AI Architecture Teardown** — Complete (`02-Product-Teardown`)
-- ✅ **Phase 3A: Passive Discovery (25 Reddit Threads)** — Complete (`reddit-evidence-log-01.md`, `02.md`, `03.md`, `evidence-audit-r1-r25.md`)
+- ✅ **Phase 3A: Passive Discovery & Source Audit** — Complete (`reddit-evidence-log-01.md`, `evidence-audit-r1-r25.md`)
 - ✅ **Phase 4: Opportunity Solution Tree & MVP Prioritization** — Complete (`opportunity-solution-tree-and-mvp-decision.md`)
-- ✅ **Phase 3B Feasibility Spike & Interview Kit** — Complete (`api-access-and-capability-matrix.md`, `interview-capture-sheet-m1.md`, `m2.md`, `cross-interview-evidence-synthesis-m1-m2.md`)
+- ✅ **Phase 3B Feasibility Spike & Interview Kit** — Complete (`api-access-and-capability-matrix.md`, `technical-evidence-caveat-api-boundaries.md`, `interview-capture-sheet-m1.md`, `m2.md`, `cross-interview-evidence-synthesis-m1-m2.md`)
 - 🏆 **The 5 Fast-Track Final Deliverables (`04-Deliverables/`):**
-  - ✅ **Deliverable 1: Final Product Strategy** (`01-final-product-strategy.md`) — Teardown of Shopify's 35% activation deficit, 5 friction clusters, and strategic pivot to preflight validation.
-  - ✅ **Deliverable 2: MVP & PRD** (`02-prd-flowlens-preflight-validator.md`) — Comprehensive PRD specifying deterministic AST rules (L-01 to L-05), LLM explainer layer, and synthetic scenario runner.
-  - ✅ **Deliverable 3: Clickable Prototype** (`03-prototype/index.html`) — Interactive, responsive prototype in Oxford Midnight and cream with dynamic DAG nodes, plain-language alerts, and live scenario simulator.
-  - ✅ **Deliverable 4: Evaluation & Business Strategy** (`04-evaluation-and-business-strategy.md`) — 10-scenario golden benchmark (100% precision, 0% hallucinations), metrics tree, and tiered SaaS pricing.
+  - ✅ **Deliverable 1: Final Product Strategy** (`01-final-product-strategy.md`) — Teardown of Shopify's 35% activation deficit and strategic pivot to preflight validation.
+  - ✅ **Deliverable 2: MVP & PRD** (`02-prd-flowlens-preflight-validator.md`) — PRD specifying 5 revised linting rules (L-01 to L-05), LLM explainer layer, and synthetic scenario runner.
+  - ✅ **Deliverable 3: Clickable Prototype** (`03-prototype/index.html`) — Interactive concept prototype in Oxford Midnight and cream with dynamic DAG nodes, grounded alerts, and scenario simulator.
+  - ✅ **Deliverable 4: Evaluation & Business Strategy** (`04-evaluation-and-business-strategy.md`) — 10-fixture benchmark evaluation, metrics tree, and tiered SaaS pricing hypotheses.
   - ✅ **Deliverable 5: Portfolio Case Study** (`05-portfolio-case-study.md`) — End-to-end publishable AI PM case study highlighting senior-level problem selection and technical trade-offs.
