@@ -128,3 +128,4 @@ Capture real-world merchant and developer accounts of Shopify Flow and Sidekick 
 - How do you currently test changes before activation?
 - What tasks do you need to complete when you are away from a computer?
 - What would make you trust an assistant to take an action, and which actions should always require approval?
+

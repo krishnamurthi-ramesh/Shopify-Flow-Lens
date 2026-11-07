@@ -30,7 +30,9 @@ Project-4-Shopify-Flow-AI/
 ├── README.md                                      ← You are here: Teardown synthesis & executive brief
 ├── 01-Research/
 │   ├── problem-discovery-and-user-segmentation.md ← Evidence ledger (E1–E17), behavioral segments, JTBD
-│   └── reddit-evidence-log-01.md                  ← Initial passive Reddit signals (R1–R7) & observations
+│   ├── reddit-evidence-log-01.md                  ← Initial passive Reddit signals (R1–R7)
+│   └── reddit-evidence-log-02.md                  ← Expanded passive Reddit signals (R8–R17): race conditions,
+│                                                     backfilling barriers, silent failures, Sidekick memory
 ├── 02-Product-Teardown/
 │   ├── shopify-flow-sidekick-deep-dive.md         ← Documented user journey, funnels, AI architecture
 │   └── opportunity-hypotheses.md                  ← 5 testable opportunity hypotheses (H1–H5)
@@ -72,5 +74,6 @@ Our analysis distinguishes verified first-party disclosures from product hypothe
 ## 🧭 Active Phase: Phase 3 — Customer Discovery
 
 Current milestone is **Phase 3A: Passive Discovery via Public Merchant Discussions**:
-- [`01-Research/reddit-evidence-log-01.md`](./01-Research/reddit-evidence-log-01.md) — 7 initial Reddit discussions coded across observability, mobile operations, Sidekick consistency, data context, and integration boundaries.
-- Target: Review 20 additional discussions across r/shopify, r/AutomateShopify, and r/shopifyDev to validate whether the real problem is creation, outcome observability, or error recovery before building solutions.
+- **Log 01 (R1–R7):** [`01-Research/reddit-evidence-log-01.md`](./01-Research/reddit-evidence-log-01.md) — Workflow run visibility, mobile warehouse needs, Sidekick capability shifts, and positive Flow use cases.
+- **Log 02 (R8–R17):** [`01-Research/reddit-evidence-log-02.md`](./01-Research/reddit-evidence-log-02.md) — Race conditions (capture vs cancel), backfilling barriers, silent string condition failures, test orders poisoning 3PLs, Sidekick session memory loss, and Zapier-to-Flow economic migration.
+- **Cumulative Evidence:** 17 public discussions analyzed and cross-referenced against Shopify's engineering disclosures.
