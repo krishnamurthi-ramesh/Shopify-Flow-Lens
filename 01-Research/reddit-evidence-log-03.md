@@ -140,3 +140,4 @@ The real opportunity is solving what happens **at the edges of creation**:
 1. **Explainable Testing & Condition Diagnostics:** Showing exactly *which* condition sub-clause matched or failed on real data, with natural-language suggestions (e.g. "Did you mean 'US'?").
 2. **Connector & Consent Pre-Flight Verification:** Checking app scopes and customer consent before generating broken email/webhook actions.
 3. **Conversational Editing with Clear Diffs:** Helping merchants break through the "Template Ceiling" by editing existing workflows conversationally with visual before/after diffs.
+

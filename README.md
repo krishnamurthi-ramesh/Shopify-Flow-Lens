@@ -2,9 +2,9 @@
 
 [![Role](https://img.shields.io/badge/Role-AI_Product_Manager-7c3aed?style=flat-square)]()
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
-[![Status](https://img.shields.io/badge/Status-Phase_3A_Passive_Discovery_Complete-008060?style=flat-square)]()
+[![Status](https://img.shields.io/badge/Status-Phase_4_Opportunity_Selection_Ready-008060?style=flat-square)]()
 
-An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes testable opportunity hypotheses grounded in real merchant evidence.
+An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes an Opportunity Solution Tree grounded in 25 authentic merchant discussions.
 
 ---
 
@@ -27,18 +27,19 @@ Rather than inventing problems or proposing features that Shopify already suppor
 
 ```
 Project-4-Shopify-Flow-AI/
-├── README.md                                      ← You are here: Teardown synthesis & executive brief
+├── README.md                                             ← You are here: Teardown synthesis & executive brief
 ├── 01-Research/
-│   ├── problem-discovery-and-user-segmentation.md ← Evidence ledger (E1–E17), behavioral segments, JTBD
-│   ├── reddit-evidence-log-01.md                  ← Passive Reddit signals (R1–R7): run visibility, mobile, Sidekick
-│   ├── reddit-evidence-log-02.md                  ← Passive Reddit signals (R8–R17): race conditions, backfill, ISO codes
-│   └── reddit-evidence-log-03.md                  ← Passive Reddit signals (R18–R25): app scopes, consent, template ceiling
+│   ├── problem-discovery-and-user-segmentation.md        ← Evidence ledger (E1–E17), behavioral segments, JTBD
+│   ├── reddit-evidence-log-01.md                         ← Passive Reddit signals (R1–R7): run visibility, mobile, Sidekick
+│   ├── reddit-evidence-log-02.md                         ← Passive Reddit signals (R8–R17): race conditions, backfill, ISO codes
+│   └── reddit-evidence-log-03.md                         ← Passive Reddit signals (R18–R25): app scopes, consent, template ceiling
 ├── 02-Product-Teardown/
-│   ├── shopify-flow-sidekick-deep-dive.md         ← Documented user journey, funnels, AI architecture
-│   └── opportunity-hypotheses.md                  ← 5 testable opportunity hypotheses (H1–H5)
+│   ├── shopify-flow-sidekick-deep-dive.md                ← Documented user journey, funnels, AI architecture
+│   ├── opportunity-hypotheses.md                         ← 5 initial opportunity hypotheses (H1–H5)
+│   └── opportunity-solution-tree-and-mvp-decision.md     ← Phase 4: Opportunity Solution Tree & MVP decision gate
 └── 03-Discovery-Plan/
-    ├── merchant-interview-guide.md                ← Semi-structured 30-min interview guide & note template
-    └── phase-3-validation-roadmap.md              ← Complete Phase 3-to-8 execution roadmap
+    ├── merchant-interview-guide.md                       ← Semi-structured 30-min interview guide & note template
+    └── phase-3-validation-roadmap.md                     ← Complete Phase 3-to-8 execution roadmap
 ```
 
 ---
@@ -71,20 +72,24 @@ We analyzed 25 authentic merchant and developer discussions across `r/shopify`, 
 
 ---
 
-## 💡 The 5 Testable Opportunity Hypotheses
+## 🎯 Phase 4: Opportunity Solution Tree & Leading Candidate
 
-| Hypothesis ID | Title | Root Friction Addressed | Proposed Validation Approach |
-|---|---|---|---|
-| **H1** | **Intent-Aware Routing** | Non-creation requests (editing, questions) forced into creation workflows. | Usability tests with mixed creation, editing, and informational tasks. |
-| **H2** | **Contextual Configuration Completion** | Missing required values (e.g. emails) causing Review-banner drop-offs. | Compare current Review banner with in-context guided parameter resolution. |
-| **H3** | **Test Coverage & External-Action Clarity** | Test mode cannot simulate external HTTP/app actions, leaving residual risk unclear. | Test preflight summary report highlighting covered vs. untested action paths. |
-| **H4** | **Change Review for Conversational Edits** | Conversational updates lack visual diffs showing exact before/after logic changes. | Compare conversation-only edits with visual side-by-side diffs. |
-| **H5** | **Integration Readiness & Recovery** | Workflows fail when app connectors are uninstalled or missing permissions. | Pre-generation readiness check identifying missing connector dependencies. |
+From our 25-discussion evidence base, we reframed the product goal from *"generating flows"* to:
+> **"Help Shopify merchants confidently create, adapt, and operate automations that achieve their intended business outcomes, while reducing avoidable debugging effort and unintended operational actions."**
+
+### Qualitative Hypothesis Ranking:
+1. **Leading Candidate (Priority 1): H3 — Test Coverage & External-Action Clarity (Explainable Workflow Diagnostics)**
+   - Focus: Helping merchants understand *why* a condition evaluated to False, distinguishing expected no-action from silent failure, and highlighting untested third-party actions.
+2. **Second Candidate (Priority 2): H4 — Change Review for Conversational Edits**
+   - Focus: Breaking through the "Template Ceiling" with visual side-by-side logic diffs for conversational modifications.
+3. **Adjacent Opportunities: H2 & H5 (Contextual Parameter Completion & Integration Readiness)**
+4. **Lowest First Wedge: H1 (Intent Routing)**
 
 ---
 
-## 🧭 Milestone Status: Ready for Phase 3B (Primary Merchant Interviews)
+## 🧭 Milestone Status: Ready for Phase 3B (Targeted Live Validation)
 - ✅ **Phase 1: Problem Discovery & User Segmentation** — Complete (`01-Research`)
 - ✅ **Phase 2: Product & AI Architecture Teardown** — Complete (`02-Product-Teardown`)
 - ✅ **Phase 3A: Passive Discovery (25 Reddit Threads)** — Complete (`reddit-evidence-log-01.md`, `02.md`, `03.md`)
-- 🎯 **Next Milestone:** Phase 3B — Active Merchant Interviews & Opportunity Scoring Tree
+- ✅ **Phase 4: Opportunity Solution Tree & MVP Prioritization** — Complete (`opportunity-solution-tree-and-mvp-decision.md`)
+- 🎯 **Next Milestone:** Phase 3B — Targeted Interviews (4–6 merchants, 2–3 developers) on H3/H4 diagnostic tasks + technical feasibility spike.
