@@ -108,6 +108,7 @@ FlowLens focuses on five narrow, technically verifiable static analysis checks:
 
 To demonstrate the product experience, I designed and coded an interactive concept prototype ([`04-Deliverables/03-prototype/index.html`](03-prototype/index.html)) following a dark slate / Oxford Midnight aesthetic (`#070a11` / `#0b0f19`):
 
+- **Merchant NLP Prompt & Glassbox AI Teardown:** Connects the prompt entered by the merchant to the black-box assumption made by Sidekick, revealing why the issue occurred in Shopify's data layer.
 - **Visual Workflow Graph:** Displays Trigger $\rightarrow$ Condition $\rightarrow$ Action nodes with color-coded severity borders.
 - **Three Seeded Demonstration Scenarios:**
   1. *Country ISO-2 Mismatch (Rule L-01)*

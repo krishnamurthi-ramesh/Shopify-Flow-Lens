@@ -82,7 +82,10 @@ Shopify merchants rely on Shopify Flow to automate critical business operations.
 
 Following the dark slate / Oxford Midnight aesthetic (`#070a11` / `#0b0f19`) seen in advanced AI operations tools (e.g., Revka Agent OS):
 1. **Top Bar:** Workflow title, file type, Preflight Status (Issue Counts: e.g., `1 Fatal Defect`, `1 Informational Note`), and Remediation CTA.
-2. **Left Canvas (DAG View):** Interactive node canvas displaying Trigger $\rightarrow$ Condition $\rightarrow$ Action nodes with color-coded status borders.
+2. **Left Canvas (DAG View & Glassbox Inspector):**
+   - **Merchant NLP Prompt Card:** Displays the original natural-language prompt submitted to Sidekick.
+   - **Glassbox Teardown Panel:** Explains the black-box model assumption vs. why the issue occurred in Shopify's data model.
+   - **Interactive Node Canvas:** Displays Trigger $\rightarrow$ Condition $\rightarrow$ Action nodes with color-coded status borders.
 3. **Right Inspector:**
    - Detailed rule findings with documentation citations.
    - Interactive Scenario Runner: Click between nominal pass, nominal fail, and edge-case payloads.
