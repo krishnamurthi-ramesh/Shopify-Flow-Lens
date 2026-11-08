@@ -1,10 +1,11 @@
 # Product Requirements Document (PRD): FlowLens Preflight Analyzer
 
+**Author:** Krishnamurthi  
+**Role:** AI Product Manager  
 **Product Name:** FlowLens  
 **Release Target:** Concept Prototype v1.0 (Read-Only Preflight Analyzer)  
-**Author:** R. Krishnamurthi (AI Product Manager)  
 **Status:** Approved for Concept Prototype (Post-Audit Revision)  
-**Last Updated:** November 2026  
+**Date:** November 2026  
 
 ---
 

@@ -1,0 +1,7 @@
+[build]
+  publish = "04-Deliverables/03-prototype"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

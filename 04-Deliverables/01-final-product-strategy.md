@@ -1,10 +1,10 @@
 # FlowLens: Final Product Strategy & Architectural Teardown
 
+**Author:** Krishnamurthi  
+**Role:** AI Product Manager  
 **Project:** Shopify Flow + Sidekick AI Teardown & Independent Product Opportunity  
-**Role:** AI Product Manager Portfolio Project  
-**Author:** R. Krishnamurthi  
 **Status:** Frozen Research Baseline & Authoritative Product Strategy (Deliverable 1)  
-**Last Updated:** November 2026 (Post-Audit Revisions)  
+**Date:** November 2026  
 
 ---
 

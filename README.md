@@ -4,6 +4,9 @@
 [![Type](https://img.shields.io/badge/Type-Evidence--Led_Product_Teardown-008060?style=flat-square)]()
 [![Status](https://img.shields.io/badge/Status-Portfolio_Asset_Complete-008060?style=flat-square)]()
 
+**Author:** Krishnamurthi  
+**Role:** AI Product Manager  
+
 An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes an Opportunity Solution Tree grounded in verified merchant and developer discussions.
 
 ---
@@ -26,7 +29,7 @@ Rather than inventing problems or proposing features that Shopify already suppor
 ## 📂 Project Repository Structure
 
 ```
-Project-4-Shopify-Flow-AI/
+Shopify-Flow-AI/
 ├── README.md                                             ← You are here: Teardown synthesis & executive brief
 ├── 01-Research/
 │   ├── problem-discovery-and-user-segmentation.md        ← Evidence ledger (E1–E17), behavioral segments, JTBD

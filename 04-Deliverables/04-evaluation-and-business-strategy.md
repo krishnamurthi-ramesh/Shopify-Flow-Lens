@@ -1,8 +1,9 @@
 # Evaluation, Benchmarking & Business Strategy: FlowLens
 
+**Author:** Krishnamurthi  
+**Role:** AI Product Manager  
 **Product:** FlowLens Preflight Analyzer for Shopify Flow  
 **Deliverable:** Evaluation & Business Strategy (Deliverable 4)  
-**Author:** R. Krishnamurthi (AI Product Manager)  
 **Status:** Post-Audit Defensible Baseline  
 **Date:** November 2026  
 

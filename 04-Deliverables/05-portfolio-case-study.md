@@ -1,12 +1,12 @@
 # Shopify FlowLens: AI Product Management Case Study
 
+**Author:** Krishnamurthi  
+**Role:** AI Product Manager  
 **Project:** FlowLens — Read-Only Preflight Analyzer for Shopify Flow  
-**Role:** AI Product Manager (Portfolio Case Study)  
-**Author:** R. Krishnamurthi  
 **Methodology:** Desk Research, Product Teardown, API Boundary Analysis & Interactive Prototyping  
 **Deliverable:** Flagship Case Study Narrative (Deliverable 5)  
 **Status:** Post-Audit Validated Baseline  
-**Interactive Artifact:** [FlowLens Interactive Prototype](file:///e:/New%20folder/Project-4-Shopify-Flow-AI/04-Deliverables/03-prototype/index.html)  
+**Interactive Prototype:** [FlowLens Interactive Prototype](03-prototype/index.html)  
 
 ---
 
@@ -106,7 +106,7 @@ FlowLens focuses on five narrow, technically verifiable static analysis checks:
 
 ## 💻 6. Interactive Concept Prototype
 
-To demonstrate the product experience, I designed and coded an interactive concept prototype ([`04-Deliverables/03-prototype/index.html`](file:///e:/New%20folder/Project-4-Shopify-Flow-AI/04-Deliverables/03-prototype/index.html)) following a dark slate / Oxford Midnight aesthetic (`#070a11` / `#0b0f19`):
+To demonstrate the product experience, I designed and coded an interactive concept prototype ([`04-Deliverables/03-prototype/index.html`](03-prototype/index.html)) following a dark slate / Oxford Midnight aesthetic (`#070a11` / `#0b0f19`):
 
 - **Visual Workflow Graph:** Displays Trigger $\rightarrow$ Condition $\rightarrow$ Action nodes with color-coded severity borders.
 - **Three Seeded Demonstration Scenarios:**
