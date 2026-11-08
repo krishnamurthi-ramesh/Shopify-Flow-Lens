@@ -29,7 +29,7 @@ Rather than inventing problems or proposing features that Shopify already suppor
 ## 📂 Project Repository Structure
 
 ```
-Shopify-Flow-AI/
+Shopify-Flow-Lens/
 ├── README.md                                             ← You are here: Teardown synthesis & executive brief
 ├── 01-Research/
 │   ├── problem-discovery-and-user-segmentation.md        ← Evidence ledger (E1–E17), behavioral segments, JTBD
