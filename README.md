@@ -103,16 +103,3 @@ From our verified evidence base, we reframed the product goal from *"generating 
 4. **Lowest First Wedge: H1 (Intent Routing)**
 
 ---
-
-## 🧭 Project Status: Flagship AI PM Portfolio Asset (Complete)
-- ✅ **Phase 1: Problem Discovery & User Segmentation** — Complete (`01-Research`)
-- ✅ **Phase 2: Product & AI Architecture Teardown** — Complete (`02-Product-Teardown`)
-- ✅ **Phase 3A: Passive Discovery & Source Audit** — Complete (`reddit-evidence-log-01.md`, `evidence-audit-r1-r25.md`)
-- ✅ **Phase 4: Opportunity Solution Tree & MVP Prioritization** — Complete (`opportunity-solution-tree-and-mvp-decision.md`)
-- ✅ **Phase 3B Feasibility Spike & Interview Kit** — Complete (`api-access-and-capability-matrix.md`, `technical-evidence-caveat-api-boundaries.md`, `interview-capture-sheet-m1.md`, `m2.md`, `cross-interview-evidence-synthesis-m1-m2.md`)
-- 🏆 **The 5 Fast-Track Final Deliverables (`04-Deliverables/`):**
-  - ✅ **Deliverable 1: Final Product Strategy** (`01-final-product-strategy.md`) — Teardown of Shopify's 35% activation deficit and strategic pivot to preflight validation.
-  - ✅ **Deliverable 2: MVP & PRD** (`02-prd-flowlens-preflight-validator.md`) — PRD specifying 5 revised linting rules (L-01 to L-05), LLM explainer layer, and synthetic scenario runner.
-  - ✅ **Deliverable 3: Clickable Prototype** (`03-prototype/index.html`) — Interactive concept prototype in Oxford Midnight and cream with dynamic DAG nodes, grounded alerts, and scenario simulator.
-  - ✅ **Deliverable 4: Evaluation & Business Strategy** (`04-evaluation-and-business-strategy.md`) — 10-fixture benchmark evaluation, metrics tree, and tiered SaaS pricing hypotheses.
-  - ✅ **Deliverable 5: Portfolio Case Study** (`05-portfolio-case-study.md`) — End-to-end publishable AI PM case study highlighting senior-level problem selection and technical trade-offs.
