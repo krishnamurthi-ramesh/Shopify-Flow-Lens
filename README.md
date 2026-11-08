@@ -5,8 +5,7 @@
 [![Status](https://img.shields.io/badge/Status-Portfolio_Asset_Complete-008060?style=flat-square)]()
 [![Live Prototype](https://img.shields.io/badge/Live_Prototype-Vercel-000000?style=flat-square&logo=vercel)](https://shopify-flowlens.vercel.app)
 
-**Author:** Krishnamurthi  
-**Role:** AI Product Manager  
+**Author:** Krishnamurthi &nbsp;|&nbsp; **Role:** AI Product Manager  
 
 An evidence-led AI Product Management teardown analyzing Shopify's natural-language workflow generation in Shopify Flow and Sidekick. This project investigates why Shopify's internally fine-tuned tool-calling model initially delivered a **35% lower workflow activation rate** than the prompt-based baseline in a 1% production rollout, dissects the underlying product and architectural boundaries, and establishes an Opportunity Solution Tree grounded in verified merchant and developer discussions.
 
