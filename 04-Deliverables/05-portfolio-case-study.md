@@ -6,7 +6,7 @@
 **Methodology:** Desk Research, Product Teardown, API Boundary Analysis & Interactive Prototyping  
 **Deliverable:** Flagship Case Study Narrative (Deliverable 5)  
 **Status:** Post-Audit Validated Baseline  
-**Interactive Prototype:** [FlowLens Concept Prototype](03-prototype/index.html) • [Live Web Demo](https://krishnamurthi-ramesh.github.io/Shopify-FlowLens/)  
+**Interactive Prototype:** [FlowLens Concept Prototype](03-prototype/index.html) • [Live Vercel Demo](https://shopify-flowlens.vercel.app)  
 
 ---
 
